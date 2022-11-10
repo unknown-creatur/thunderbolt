@@ -4,6 +4,12 @@ function brightest () {
         y += 1
     }
 }
+function bright () {
+    for (let index = 0; index < 5; index++) {
+        led.plotBrightness(x3, y, 20)
+        y += 1
+    }
+}
 function brighter () {
     for (let index = 0; index < 5; index++) {
         led.plotBrightness(x2, y, 60)
@@ -11,25 +17,36 @@ function brighter () {
     }
 }
 let y = 0
+let x3 = 0
 let x2 = 0
 let x1 = 0
-x1 = 0
-x2 = 0
+x1 = 2
+x2 = 1
+x3 = 0
 y = 0
-let dx = 0
+let dx1 = 1
+let dx2 = 1
+let dx3 = 1
 basic.forever(function () {
     basic.clearScreen()
     y = 0
     if (x1 == 0) {
-        dx = 1
+        dx1 = 1
     } else if (x1 == 4) {
-        dx = -1
+        dx1 = -1
     }
-    brightest()
-    x1 += dx
-    basic.pause(100)
-    basic.clearScreen()
-    brighter()
-    x2 += dx
+    if (x2 == 0) {
+        dx1 = 1
+    } else if (x1 == 4) {
+        dx1 = -1
+    }
+    x1 += dx1
+    x2 += dx2
+    x3 += dx3
+    for (let index = 0; index < 4; index++) {
+        brightest()
+        brighter()
+        bright()
+    }
     basic.pause(100)
 })
