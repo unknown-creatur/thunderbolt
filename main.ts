@@ -25,8 +25,11 @@ basic.forever(function () {
     } else if (x1 == 4) {
         dx = -1
     }
-    x1 += dx
     brightest()
+    x1 += dx
+    basic.pause(100)
+    basic.clearScreen()
     brighter()
+    x2 += dx
     basic.pause(100)
 })
