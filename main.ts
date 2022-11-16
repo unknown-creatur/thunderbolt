@@ -28,15 +28,20 @@ let dx1 = 1
 let dx2 = 1
 let dx3 = 1
 basic.forever(function () {
-    basic.clearScreen()
+    for (let index = 0; index < 5; index++) {
+        led.plot(x1, y)
+        led.plotBrightness(x2, y, 60)
+        led.plotBrightness(x3, y, 20)
+        y += 1
+    }
     y = 0
-    if (x1 <= 0) {
+    if (x1 == 0) {
         dx1 = 1
         basic.pause(100)
         dx2 = 1
         basic.pause(100)
         dx3 = 1
-    } else if (x1 >= 4) {
+    } else if (x1 == 4) {
         dx1 = -1
         basic.pause(100)
         dx2 = -1
@@ -44,18 +49,8 @@ basic.forever(function () {
         dx3 = -1
     }
     x1 += dx1
-    basic.pause(100)
     x2 += dx2
-    basic.pause(100)
     x3 += dx3
-    for (let index = 0; index < 5; index++) {
-        led.plot(x1, y)
-        led.plotBrightness(x2, y, 60)
-        led.plotBrightness(x3, y, 20)
-        y += 1
-    }
-    led.unplot(x2, y)
-    basic.pause(100)
-    led.unplot(x3, y)
-    basic.pause(100)
+    basic.pause(500)
+    basic.clearScreen()
 })
